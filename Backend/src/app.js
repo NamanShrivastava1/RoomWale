@@ -9,12 +9,13 @@ import taskRoutes from './routes/task.routes.js';
 import morganLogger from './loggers/morgan.logger.js';
 import ApiError from './utils/ApiError.js';
 import errorMiddleware from './middleware/errorMiddleware.js';
+import { config } from './config/config.js';
 
 const app = express();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: config.CLIENT_URL || 'http://localhost:5173',
     credentials: true,
   })
 );

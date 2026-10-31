@@ -13,7 +13,7 @@ const createAccessToken = (userId) => {
 const cookieOptions = {
   httpOnly: true,
   secure: config.NODE_ENV === 'production',
-  sameSite: 'lax',
+  sameSite: config.NODE_ENV === 'production' ? 'none' : 'lax',
   path: '/',
   maxAge: 24 * 60 * 60 * 1000,
 };
@@ -125,7 +125,7 @@ export const logout = asyncHandler(async (req, res) => {
   res.clearCookie('accessToken', {
     httpOnly: true,
     secure: config.NODE_ENV === 'production',
-    sameSite: 'lax',
+    sameSite: config.NODE_ENV === 'production' ? 'none' : 'lax',
     path: '/',
   });
 
