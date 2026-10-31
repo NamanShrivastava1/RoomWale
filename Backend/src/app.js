@@ -25,6 +25,13 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
 app.use(morganLogger);
 
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Welcome to Roommate Tracker API',
+  });
+});
+
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     success: true,
